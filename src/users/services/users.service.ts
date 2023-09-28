@@ -17,7 +17,6 @@ export class UsersService {
     @InjectRepository(User) private userRepo: Repository<User>,
     private productsService: ProductsService,
     private customerService: CustomersService,
-    private configService: ConfigService,
   ) {}
 
   async findAll() {
