@@ -56,7 +56,7 @@ export class UsersService {
     return this.userRepo.delete(id);
   }
 
-  async getOrderByUser(id: number): Promise<Order> {
+  async getOrderByUser(id: number){
     const user = await this.userRepo.findOneBy({ id: id });
     return {
       date: new Date(),
