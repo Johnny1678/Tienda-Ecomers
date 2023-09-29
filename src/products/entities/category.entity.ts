@@ -5,11 +5,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   ManyToMany,
-  JoinTable
 } from 'typeorm';
 import { Product } from "./product.entity";
 
-@Entity()
+@Entity({name: 'categories'})
 export class Category {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,18 +17,19 @@ export class Category {
   name: string;
 
   @CreateDateColumn({
+    name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createAt: Date;
 
   @UpdateDateColumn({
+    name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateAt: Date;
 
   @ManyToMany(() => Product, (product) => product.categories)
-  @JoinTable() // Solo debe estar en una entidad
   products: Product[];
 }

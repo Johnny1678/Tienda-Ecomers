@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { Customer } from './customer.entity';
 
-@Entity()
+@Entity({name: 'users'})
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -25,18 +25,20 @@ export class User {
   role: string;
 
   @CreateDateColumn({
+    name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createAt: Date;
 
   @UpdateDateColumn({
+    name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateAt: Date;
 
   @OneToOne(() => Customer, (customer) => customer.user, { nullable: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'customer_id'})
   customer: Customer;
 }
