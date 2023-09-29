@@ -8,11 +8,6 @@ import config from '../config';
 const API_KEY = '12345678';
 const API_KEY_PROD = 'PROD1232134234SA';
 
-// client.query('SELECT * FROM tasks', (err, res) => {
-//   console.error(err);
-//   console.log(res.rows);
-// })
-
 @Global()
 @Module({
   imports: [

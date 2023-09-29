@@ -1,9 +1,7 @@
 //src/user/services/user.service
-import { Injectable, NotFoundException, Inject } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Inject, Injectable, NotFoundException, forwardRef } from '@nestjs/common';
 
 import { User } from '../entities/user.entity';
-import { Order } from '../entities/order.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 
 import { ProductsService } from './../../products/services/products.service';
@@ -15,6 +13,7 @@ import { Repository } from 'typeorm';
 export class UsersService {
   constructor(
     @InjectRepository(User) private userRepo: Repository<User>,
+    @Inject(forwardRef(() => ProductsService))
     private productsService: ProductsService,
     private customerService: CustomersService,
   ) {}

@@ -6,7 +6,6 @@ import { Category } from '../entities/category.entity';
 import { CreateCategoryDto, UpdateCategoryDto } from '../dtos/category.dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { merge } from 'rxjs';
 
 @Injectable()
 export class CategoriesService {
